@@ -1,52 +1,28 @@
 package actors;
 
 import java.io.Serializable;
-
 import data.TaxiStatus;
 
+@SuppressWarnings("serial")
 public class MyTaxi implements Serializable{
 
-	private double taxiLat, taxiLng, clientLat, clientLng, desLat, desLng;
-	private String companyNo, plateNo, bodyNo, ip, companyName, description, driverName, driverLicense;
-
-	private data.TaxiStatus status;
-
+	private double curLat, curLng, distance;
+	private String plateNo, bodyNo, companyNo, companyName, driverName, description, ip, passengerIp;
+	private TaxiStatus status;
+	
 	public MyTaxi(){
-		//empty constructor
-	}
-	
-	public MyTaxi(int pId, double pCurLat, double pCurLng, String pPlateNo, String pBodyNo, int pDriverId){
-	  taxiLat=pCurLat;
-	  taxiLng=pCurLng;
-	  plateNo=pPlateNo;
-	  bodyNo=pBodyNo;
-	  status=TaxiStatus.vacant;
-	}
-	
-	public MyTaxi(int pId, String pPlateNo, String pPassword, String pBodyNo, String pCompanyName){
-	  plateNo=pPlateNo;
-	  bodyNo=pBodyNo;
-	  companyName=pCompanyName;
+		distance = 0;
 	}
 	
 	//GETTERS
 	public double getCurLat(){
-		return taxiLat;
+		return curLat;
 	}
 	public double getCurLng(){
-		return taxiLng;
+		return curLng;
 	}
-	public double getClientLat(){
-		return clientLat;
-	}
-	public double getClientLng(){
-		return clientLng;
-	}
-	public double getDesLat(){
-		return desLat;
-	}
-	public double getDesLng(){
-		return desLng;
+	public double getDistanceTraveled(){
+		return distance;
 	}
 	public String getPlateNumber(){
 		return plateNo;
@@ -60,6 +36,9 @@ public class MyTaxi implements Serializable{
 	public String getIP(){
 		return ip;
 	}
+	public String getPassengerIP(){
+		return passengerIp;
+	}
 	public String getDescription(){
 		return description;
 	}
@@ -72,15 +51,15 @@ public class MyTaxi implements Serializable{
 	public String getDriverName(){
 		return driverName;
 	}
-    public MyTaxi getTaxi(){
-    	return this;
-    }
-    
-    
+
+	
 	//SETTERS
     public void setIp(String pIp){
     	ip=pIp;
-    }    
+    }
+    public void setPassengerIp(String pPassengerIp){
+    	passengerIp=pPassengerIp;
+    }
     public void setPlateNumber(String pPlateNo){
     	plateNo=pPlateNo;
     }
@@ -93,17 +72,12 @@ public class MyTaxi implements Serializable{
     public void setDescription(String pDescription){
     	description = pDescription;
     }
-    public void setDestination(double pDesLat, double pDesLng){
-    	desLat=pDesLat;
-    	desLng=pDesLng;
-    }
     public void setCurrentLocation(double pCurLat, double pCurLng){
-    	taxiLat=pCurLat;
-    	taxiLng=pCurLng;
+    	curLat=pCurLat;
+    	curLng=pCurLng;
     }
-    public void setClientLocation(double pClientLat, double pClientLng){
-    	clientLat=pClientLat;
-    	clientLng=pClientLng;
+    public void setDistanceTraveled(double pDistance){
+    	distance = pDistance;
     }
     public void setCompanyName(String pCompName){
     	companyName=pCompName;

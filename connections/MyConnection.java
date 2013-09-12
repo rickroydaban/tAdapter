@@ -2,13 +2,13 @@ package connections;
 
 public class MyConnection {
   private String serverIp;
-  private int serverPort;
-  private int taxiPort;
+  private int serverPort, taxiPort, passengerPort;
 	
   public MyConnection(){
 	  serverIp = "";
-	  serverPort = 8000;
-	  taxiPort = 8888;
+	  serverPort = 7000;
+	  taxiPort = 8000;
+	  passengerPort = 9000;
   }
   
   public void setServerIp(String pIp){
@@ -25,5 +25,9 @@ public class MyConnection {
   
   public int getTaxiPort(){
 	  return taxiPort;
-  }  
+  }
+  
+  public int getPassengerPort(){
+	  return passengerPort;
+  }
 }
