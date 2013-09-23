@@ -9,6 +9,7 @@ public class MyPassenger implements Serializable{
 	private static final long serialVersionUID = 1;
 	private double curLat, curLng, desLat, desLng;
 	private String ip, passengerName;
+	private String plateNo;
 	
 	//GETTERS
 	public double getCurLat(){
@@ -30,9 +31,16 @@ public class MyPassenger implements Serializable{
 		return passengerName;
 	}
 
-    
-    //SETTERS
-    public void setCurrentLocation(double pCurLat, double pCurLng){
+  public String getRequestedTaxi(){
+  	return plateNo;
+  }
+	
+  //SETTERS
+  public void setRequestedTaxi(String pPlateNo){
+  	plateNo = pPlateNo;
+  }
+  
+  public void setCurrentLocation(double pCurLat, double pCurLng){
     	curLat=pCurLat;
     	curLng=pCurLng;
     }
