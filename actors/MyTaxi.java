@@ -3,15 +3,17 @@ package actors;
 import java.io.Serializable;
 import data.TaxiStatus;
 
-@SuppressWarnings("serial")
 public class MyTaxi implements Serializable{
 
-	private double curLat, curLng, distance;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9165214409919118757L;
+	private double curLat, curLng, prevLat, prevLng;
 	private String plateNo, bodyNo, companyNo, companyName, driverName, description, ip, passengerIp;
 	private TaxiStatus status;
 	
 	public MyTaxi(){
-		distance = 0;
 	}
 	
 	//GETTERS
@@ -21,8 +23,11 @@ public class MyTaxi implements Serializable{
 	public double getCurLng(){
 		return curLng;
 	}
-	public double getDistanceTraveled(){
-		return distance;
+	public double getPrevLat(){
+		return prevLat;
+	}
+	public double getPrevLng(){
+		return prevLng;
 	}
 	public String getPlateNumber(){
 		return plateNo;
@@ -73,12 +78,13 @@ public class MyTaxi implements Serializable{
     	description = pDescription;
     }
     public void setCurrentLocation(double pCurLat, double pCurLng){
+    	prevLat = curLat;
+    	prevLng = curLng;
+    	
     	curLat=pCurLat;
     	curLng=pCurLng;
     }
-    public void setDistanceTraveled(double pDistance){
-    	distance = pDistance;
-    }
+
     public void setCompanyName(String pCompName){
     	companyName=pCompName;
     }
